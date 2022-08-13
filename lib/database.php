@@ -111,11 +111,11 @@ function db_write($table, $column, $value, $where, $target, $mode = 'w')
         } else
         if ($mode === 'h') {
             $record = db_read($table, $column, $where, $target);
-            $stmt->execute(array($value . $record['content'], $target));
+            $stmt->execute(array($value . $record[$column], $target));
         } else
         if ($mode === 'f') {
             $record = db_read($table, $column, $where, $target);
-            $stmt->execute(array($record['content'] . $value, $target));
+            $stmt->execute(array($record[$column] . $value, $target));
         } else {
             die_message("database.php: the mode is wrong");
         }
